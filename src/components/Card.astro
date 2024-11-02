@@ -1,25 +1,60 @@
 ---
 interface Props {
 	title: string;
-	body: string;
-	href: string;
+	author: string;
+	description: string;
+	tags: string;
+	image: string;
 }
 
-const { href, title, body } = Astro.props;
+const { author,description, tags,image, title } = Astro.props;
 ---
 
 <li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
+	<a>
+		<img src={image} alt={title} />
+		<div class="info">
+			<h2>
+				{title}
+			</h2>
+			<h3>{author}</h3>
+			<p>
+				{description}
+			</p>
+			<div class="tags">
+				{
+					tags.split('|').map((tag) => (
+						<p class="tag">{tag}</p>
+					))
+				}
+			</div>
+		</div>
 	</a>
 </li>
 <style>
+	img {
+		max-width: 300px;
+		width: 100%;
+		height: auto;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		gap: 10px;
+	}
+
+	.tag {
+		padding: 10px;
+		background: #33384253;
+		color: aliceblue;
+	}
+
+	.tag:hover {
+		background: #333842;
+		color: #ddd;
+	}
 	.link-card {
 		list-style: none;
 		display: flex;
