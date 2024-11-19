@@ -1,4 +1,4 @@
-## 🧞 Commands
+## 🧞 Commands.
 
 1.- Enable publicly for those who have the document link.
 
